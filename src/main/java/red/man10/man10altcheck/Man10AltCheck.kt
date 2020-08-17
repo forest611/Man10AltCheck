@@ -27,7 +27,7 @@ class Man10AltCheck : JavaPlugin(),Listener {
 
     fun setAddress(p:Player){
 
-        val address = p.address
+        val address = p.address.hostString
 
         if (address == null){
             Bukkit.getLogger().info("IPAddressの取得に失敗！")
@@ -63,7 +63,7 @@ class Man10AltCheck : JavaPlugin(),Listener {
 
         val p = Bukkit.getPlayer(name)
 
-        val sql = if (p != null) "SELECT uuid FROM user_list WHERE address='${p.address}';"
+        val sql = if (p != null) "SELECT uuid FROM user_list WHERE address='${p.address.hostString}';"
         else "SELECT uuid FROM user_list WHERE player='$name';"
 
         val rs = mysql.query(sql)?:return list
@@ -93,7 +93,7 @@ class Man10AltCheck : JavaPlugin(),Listener {
 
         GlobalScope.launch {
 
-            val list = getPlayers(args[1])
+            val list = getPlayers(args[0])
 
             sender.sendMessage("§c§l現在検索中....")
 
