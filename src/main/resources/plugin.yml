@@ -1,0 +1,9 @@
+name: Man10AltCheck
+version: 1.0
+softdepend:
+  - Man10CommonLibs
+main: red.man10.man10altcheck.Man10AltCheck
+api-version: 1.15
+commands:
+  altcheck:
+    default: op
